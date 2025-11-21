@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: legacy-php55-apache
+    ports:
+      - "80:80"          # 按需改成其他端口
+    volumes:
+      - ./www:/var/www/html
+      - ./conf/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro
+      - ./conf/php.ini:/usr/local/php/etc/php.ini:ro
+    restart: always
+
+
